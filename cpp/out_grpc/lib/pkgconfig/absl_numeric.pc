@@ -1,0 +1,12 @@
+prefix=/home/ztz/work/gRPC_test/out_grpc
+exec_prefix=${prefix}
+libdir=/home/ztz/work/gRPC_test/out_grpc/lib
+includedir=/home/ztz/work/gRPC_test/out_grpc/include
+
+Name: absl_numeric
+Description: Abseil numeric library
+URL: https://abseil.io/
+Version: 20211102
+Requires: absl_int128 = 20211102
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

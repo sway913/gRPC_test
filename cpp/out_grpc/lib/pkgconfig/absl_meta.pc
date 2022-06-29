@@ -1,0 +1,12 @@
+prefix=/home/ztz/work/gRPC_test/out_grpc
+exec_prefix=${prefix}
+libdir=/home/ztz/work/gRPC_test/out_grpc/lib
+includedir=/home/ztz/work/gRPC_test/out_grpc/include
+
+Name: absl_meta
+Description: Abseil meta library
+URL: https://abseil.io/
+Version: 20211102
+Requires: absl_type_traits = 20211102
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

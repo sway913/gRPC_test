@@ -1,0 +1,13 @@
+prefix=/home/ztz/work/gRPC_test/out_grpc
+exec_prefix=/home/ztz/work/gRPC_test/out_grpc
+libdir=/home/ztz/work/gRPC_test/out_grpc/lib
+sharedlibdir=/home/ztz/work/gRPC_test/out_grpc/lib
+includedir=/home/ztz/work/gRPC_test/out_grpc/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.12
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

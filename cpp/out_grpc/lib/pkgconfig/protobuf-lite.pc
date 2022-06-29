@@ -1,0 +1,11 @@
+prefix=/home/ztz/work/gRPC_test/out_grpc
+exec_prefix=/home/ztz/work/gRPC_test/out_grpc
+libdir=/home/ztz/work/gRPC_test/out_grpc/lib
+includedir=/home/ztz/work/gRPC_test/out_grpc/include
+
+Name: Protocol Buffers
+Description: Google's Data Interchange Format
+Version: 3.19.4.0
+Libs: -L${libdir} -lprotobuf-lite -pthread
+Cflags: -I${includedir}
+Conflicts: protobuf
