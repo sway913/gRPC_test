@@ -1,0 +1,49 @@
+// image transmission server
+syntax = "proto3";
+ 
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.ImgTransmit";
+option java_outer_classname = "ImgTransmit";
+option objc_class_prefix = "IMT";
+ 
+package ImgTransmit;
+ 
+// service definition.
+service ImgDemo {
+  //simple RPC
+  rpc resDescFetched(BaseName) returns (Description) {}
+  // A client-to-server streaming RPC. 
+  // stream type means a group of ImgInfo will be sent orderly from client
+  rpc ImgUpload (stream ImgInfo) returns (Status) {}
+  // A server-to-client streaming RPC. send result img to client
+  rpc resImgFetched (BaseName) returns (stream ImgInfo) {}
+}
+ 
+message ImgInfo {
+  
+  string name = 1;
+  enum ImgType {
+    JPG = 0;
+    PNG = 1;
+  }
+  message Img {
+   bytes data = 1;
+   ImgType type = 2;
+   int32 height=3;
+   int32 width=4;
+   int32 channel=5;
+  }
+  // int32 indicates original img id 
+  map<int32,Img> maps = 2;
+}
+ 
+message Status {
+  int32 code = 1;
+}
+ 
+message BaseName {
+	repeated string name=1;
+}
+message Description {
+	repeated string desc=1;
+}
