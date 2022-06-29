@@ -1,2 +1,9 @@
 cpp/out_grpc/lib/libgrpc_unsecure.a filter=lfs diff=lfs merge=lfs -text
 cpp/out_grpc/lib/libgrpc.a filter=lfs diff=lfs merge=lfs -text
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# JS and TS files must always use LF for tools to work
+*.js eol=lf
+*.ts eol=lf
