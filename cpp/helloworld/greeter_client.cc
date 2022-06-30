@@ -34,6 +34,8 @@ using grpc::Status;
 using helloworld::Greeter;
 using helloworld::HelloResponse;
 using helloworld::HelloRequest;
+using helloworld::SubtitleRequest;
+using helloworld::SubtitleImgInfo;
 
 class GreeterClient {
  public:
@@ -60,6 +62,36 @@ class GreeterClient {
     // Act upon its status.
     if (status.ok()) {
       return reply.message();
+    } else {
+      std::cout << status.error_code() << ": " << status.error_message()
+                << std::endl;
+      return "RPC failed";
+    }
+  }
+
+
+  std::string UserSubtitleRequest(const std::string& user) {
+    // Data we are sending to the server.
+    SubtitleRequest request;
+    request.set_name(user);
+
+    // Container for the data we expect from the server.
+    SubtitleImgInfo reply;
+
+    // Context for the client. It could be used to convey extra information to
+    // the server and/or tweak certain RPC behaviors.
+    ClientContext context;
+
+    // The actual RPC.
+    Status status = stub_->SubtitleImageRequest(&context, request, &reply);
+
+    // Act upon its status.
+    if (status.ok()) {
+      std::cout << "ImgInfo width" << ": " << reply.width() << "   height" << ": " << reply.height()
+                << " img size:" << ": " << reply.data().size()
+                << std::endl;
+
+      return reply.name();
     } else {
       std::cout << status.error_code() << ": " << status.error_message()
                 << std::endl;
@@ -101,7 +133,9 @@ int main(int argc, char** argv) {
   GreeterClient greeter(
       grpc::CreateChannel(target_str, grpc::InsecureChannelCredentials()));
   std::string user("world");
-  std::string reply = greeter.SayHello(user);
+  std::string user1("js_image");
+  // std::string reply = greeter.SayHello(user);
+  std::string reply = greeter.UserSubtitleRequest(user1);
   std::cout << "Greeter received: " << reply << std::endl;
 
   return 0;

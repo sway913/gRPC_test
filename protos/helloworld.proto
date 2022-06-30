@@ -11,9 +11,25 @@ import "google/protobuf/struct.proto";
 // https://developers.google.com/protocol-buffers/docs/style
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloResponse);
+  rpc SubtitleImageRequest (SubtitleRequest) returns (SubtitleImgInfo);
   rpc SayHelloStreamRequest (stream HelloRequest) returns (HelloResponse) {}
   rpc SayHelloStreamResponse (HelloRequest) returns (stream HelloResponse) {}
   rpc SayHelloStream (stream HelloRequest) returns (stream HelloResponse) {}
+}
+
+message SubtitleImgInfo {
+  string name = 1;
+  bytes data = 2;
+  int32 height = 3;
+  int32 width = 4;
+}
+
+message SubtitleRequest {
+  string name = 1;
+
+  google.protobuf.Struct param_struct = 2;
+  google.protobuf.ListValue param_list_value = 3;
+  google.protobuf.Value param_value = 4;
 }
 
 message HelloRequest {

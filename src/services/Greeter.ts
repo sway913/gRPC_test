@@ -2,8 +2,10 @@ import { sendUnaryData, ServerDuplexStream, ServerReadableStream, ServerUnaryCal
   status, UntypedHandleCall } from '@grpc/grpc-js';
 import { randomBytes } from 'crypto';
 
-import { GreeterServer, GreeterService, HelloRequest, HelloResponse } from '../models/helloworld';
+import { GreeterServer, GreeterService, HelloRequest, HelloResponse, SubtitleRequest, SubtitleImgInfo } from '../models/helloworld';
 import { logger, ServiceError } from '../utils';
+
+import getPixels from 'get-pixels';
 
 /**
  * package helloworld
@@ -45,6 +47,48 @@ class Greeter implements GreeterServer {
     res.paramValue = paramValue;
 
     callback(null, HelloResponse.fromJSON(res));
+  }
+
+  public subtitleImageRequest(call: ServerUnaryCall<SubtitleRequest, SubtitleImgInfo>, callback: sendUnaryData<SubtitleImgInfo>): void {
+    logger.info('subtitleImageRequest', Date.now());
+
+    const res: Partial<SubtitleImgInfo> = {};
+    const { name } = call.request;
+    logger.info('imageRequest Name:', name);
+
+    if (name === 'error') {
+      // test
+      return callback(new ServiceError(status.INVALID_ARGUMENT, 'InvalidValue'), null);
+    }
+
+    res.name = name;
+    res.width = 1920;
+    res.height = 1080;
+
+    try {
+      getPixels('/home/ztz/Pictures/1.png', async (error, pixels) => {
+        if (error) {
+          logger.info('getPixels error');
+        }
+        // loop over every pixel
+        for (let x = 0; x < pixels.shape[0]; x++) {
+          for (let y = 0; y < pixels.shape[1]; y++) {
+            // Create RGBA for current pixel
+            // const colorAtPoint = new RGBA(
+            //   pixels.get(x, y, 0),
+            //   pixels.get(x, y, 1),
+            //   pixels.get(x, y, 2),
+            //   255
+            // );
+          }
+        }
+        logger.info('pixels length:', pixels.data.length);
+      });
+    } catch (error) {
+      logger.info('getPixels error');
+    }
+  
+    callback(null, SubtitleImgInfo.fromJSON(res));
   }
 
   public sayHelloStreamRequest(call: ServerReadableStream<HelloRequest, HelloResponse>, callback: sendUnaryData<HelloResponse>): void {
