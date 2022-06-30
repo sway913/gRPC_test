@@ -187,7 +187,7 @@ int main(int argc, char **argv)
   std::cout << "please assign the img list file:" << std::endl;
   std::vector<std::string> imglist;
   imglist.push_back("/home/ztz/Pictures/1.png");
-  imglist.push_back("/home/ztz/Pictures/2.jpeg");
+  // imglist.push_back("/home/ztz/Pictures/2.jpeg");
   client.ImgUpload(imglist);
   // std::cout << "-------------- fetch image result --------------" << std::endl;
   // client.resImgFetched("98bb90c44f55aaeeae417d8233226785.jpg");

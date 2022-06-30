@@ -65,12 +65,13 @@ public:
           std::string rowData = img.data();
           std::cout << "img size :" << h << "," << w << "," << c << ", data length:" << rowData.size() << std::endl;
           resultList[name] = info;
-          /*//可将收到的图片保存到指定目录
-          std::string savePath("/img/img-server/recevied_img/");
-          std::ofstream  out(savePath+name, std::ios::out | std::ios::binary | std::ios::ate);
-          out.write(rowData.c_str(), sizeof(char) * (rowData.size()));
-          out.close();
-          */
+          //可将收到的图片保存到指定目录
+          // std::string savePath("/home/ztz/work/gRPC_test/cpp/imgTransmit/cmake/build/" + std::to_string(rowData.size()) + "png");
+          // std::ofstream  out(savePath, std::ios::out | std::ios::binary | std::ios::ate);
+          // out.write(rowData.c_str(), sizeof(char) * (rowData.size()));
+          // out.close();
+          // std::cout << "write path :" << savePath.c_str() << std::endl;
+          
         }
         count++;
       }
