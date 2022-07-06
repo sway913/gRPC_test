@@ -1,0 +1,26 @@
+// https://developers.google.com/protocol-buffers/docs/proto3?hl=ko#json
+// https://developers.google.com/protocol-buffers/docs/reference/proto3-spec
+syntax = "proto3";
+
+// https://developers.google.com/protocol-buffers/docs/proto3#packages-and-name-resolution
+package subtitleCreate;
+
+// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf
+import "google/protobuf/struct.proto";
+
+// https://developers.google.com/protocol-buffers/docs/style
+service SubtitleCreator {
+  rpc SubtitleImageRequest (SubtitleRequest) returns (SubtitleInfoResponse);
+}
+
+message SubtitleInfoResponse {
+  string name = 1;
+  bytes data = 2;
+  int32 height = 3;
+  int32 width = 4;
+}
+
+message SubtitleRequest {
+  string name = 1;
+  google.protobuf.Struct param_struct = 2;
+}

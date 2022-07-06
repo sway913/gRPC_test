@@ -37,6 +37,8 @@ npm run client error
 npm run client stream
 # 5. Health Check
 npm run health
+# 6. subtitle
+npm run text
 ```
 
 ### Documentation

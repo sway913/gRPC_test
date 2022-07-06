@@ -12,7 +12,8 @@
     "build": "node bin/proto && rimraf dist && tsc -b",
     "start": "node dist/server",
     "client": "node dist/client",
-    "health": "node dist/health"
+    "health": "node dist/health",
+    "text": "node dist/subtitleClient"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.6.7",
