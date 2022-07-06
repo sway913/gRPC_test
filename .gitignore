@@ -4,7 +4,7 @@
 /dist/
 /cpp/grpc
 
-
+package-lock.json
 # Logs
 logs
 *.log
