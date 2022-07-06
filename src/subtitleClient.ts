@@ -2,12 +2,12 @@ import 'source-map-support/register';
 import { credentials, Metadata, ServiceError } from '@grpc/grpc-js';
 
 import { SubtitleCreatorClient, SubtitleRequest, SubtitleInfoResponse } from './models/subtitleCreator';
-import { clientService } from './subtitleService';
+import { subtitleService } from './subtitleService';
 import { logger } from './utils';
 
 // https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 // https://cloud.ibm.com/docs/blockchain-multicloud?topic=blockchain-multicloud-best-practices-app#best-practices-app-connections
-const client = new SubtitleCreatorClient('localhost:50051', credentials.createInsecure(), {
+const subtitleClient = new SubtitleCreatorClient('localhost:50051', credentials.createInsecure(), {
   'grpc.keepalive_time_ms': 120000,
   'grpc.http2.min_time_between_pings_ms': 120000,
   'grpc.keepalive_timeout_ms': 20000,
@@ -35,7 +35,7 @@ async function subtitleExample(): Promise<void> {
    * rpc SubtitleImageRequest with callback
    * https://github.com/grpc/grpc-node/issues/54
    */
-  client.subtitleImageRequest(param, (err: ServiceError | null, res: SubtitleInfoResponse) => {
+  subtitleClient.subtitleImageRequest(param, (err: ServiceError | null, res: SubtitleInfoResponse) => {
     if (err) {
       return logger.error('SubtitleImage:', err.message);
     }
@@ -46,7 +46,7 @@ async function subtitleExample(): Promise<void> {
   /**
    * rpc SubtitleImageRequest with Promise
    */
-  const subtitleImage = await clientService.SubtitleImageRequest(param);
+  const subtitleImage = await subtitleService.SubtitleImageRequest(param);
   logger.info('Promise SubtitleImage. name:', subtitleImage.name, ' width:', subtitleImage.width, ' height:', subtitleImage.height);
 }
 

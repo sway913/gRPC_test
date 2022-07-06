@@ -7,7 +7,7 @@ import { SubtitleCreatorClient, SubtitleRequest, SubtitleInfoResponse } from './
  * gRPC SubtitleCreatorClient Service
  * https://github.com/grpc/grpc-node/issues/54
  */
-class ClientService {
+class SubtitleService {
   private readonly client: SubtitleCreatorClient = new SubtitleCreatorClient('localhost:50051', credentials.createInsecure());
 
   public async SubtitleImageRequest(param: SubtitleRequest, metadata: Metadata = new Metadata()): Promise<SubtitleInfoResponse> {
@@ -15,4 +15,4 @@ class ClientService {
   }
 }
 
-export const clientService: ClientService = new ClientService();
+export const subtitleService: SubtitleService = new SubtitleService();
