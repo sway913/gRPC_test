@@ -1,7 +1,7 @@
 import { sendUnaryData, ServerDuplexStream, ServerReadableStream, ServerUnaryCall, ServerWritableStream, status, UntypedHandleCall } from '@grpc/grpc-js';
 import { randomBytes } from 'crypto';
 
-import { GreeterServer, GreeterService, HelloRequest, HelloResponse, SubtitleRequest, SubtitleImgInfo } from '../models/helloworld';
+import { GreeterServer, GreeterService, HelloRequest, HelloResponse } from '../models/helloworld';
 import { logger, ServiceError } from '../utils';
 /**
  * package helloworld
@@ -43,23 +43,6 @@ class Greeter implements GreeterServer {
     res.paramValue = paramValue;
 
     callback(null, HelloResponse.fromJSON(res));
-  }
-
-  public subtitleImageRequest(call: ServerUnaryCall<SubtitleRequest, SubtitleImgInfo>, callback: sendUnaryData<SubtitleImgInfo>): void {
-    logger.info('subtitleImageRequest', Date.now());
-
-    const res: Partial<SubtitleImgInfo> = {};
-    const { name } = call.request;
-    logger.info('imageRequest Name:', name);
-
-    if (name === 'error') {
-      // test
-      return callback(new ServiceError(status.INVALID_ARGUMENT, 'InvalidValue'), null);
-    }
-    res.name = name;
-    res.width = 1920;
-    res.height = 1080;
-    callback(null, SubtitleImgInfo.fromJSON(res));
   }
 
   public sayHelloStreamRequest(call: ServerReadableStream<HelloRequest, HelloResponse>, callback: sendUnaryData<HelloResponse>): void {

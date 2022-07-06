@@ -21,9 +21,41 @@ if (process.argv.length >= 3) {
   [,,argv] = process.argv;
 }
 
+const fontParams = {
+  id: '100',
+  backgroundAlpha: 0,
+  backgroundColor: '#0000ff',
+  backgroundRadius: 10,
+  clip_anmia_time_type: 0,
+  fontAlpha: 1,
+  fontColor: '#f9df4b',
+  fontFamily: '快乐体' || '思源黑体',
+  fontOutlineColor: '#000000',
+  fontOutlineSize: 2,
+  fontProjectionAlpha: 0.6,
+  fontProjectionColor: '#000000',
+  fontProjectionWidth: 5,
+  fontProjectionX: 10,
+  fontProjectionY: 10,
+  fontSize: 2,
+  fontTypefacePath: 'https://cdnsaas.kuai.360.cn/kjjsaas/6f15a5b0a4c7afca_siyuanheiti.ttf',
+  letterSpacing: 0.2,
+  lineHeight: 1,
+  text: '大家好',
+  textAlign: 'center',
+  textBold: false,
+  textItalic: false,
+  textJsonPropertyPath: '',
+  textUnderline: true,
+
+  videoHight: 1726,
+  videoWidth: 1080,
+  width_surfaceView: 1080,
+};
+
 const param: SubtitleRequest = {
   name: argv,
-  paramStruct: { foo: 'bar', bar: 'foo' },
+  paramStruct: fontParams,
 };
 
 const metadata = new Metadata();
@@ -41,6 +73,7 @@ async function subtitleExample(): Promise<void> {
     }
 
     logger.info('callback SubtitleImage. name:', res.name, ' width:', res.width, ' height:', res.height);
+    logger.info('callback SubtitleImage. data:', res.data);
   });
 
   /**
@@ -48,6 +81,7 @@ async function subtitleExample(): Promise<void> {
    */
   const subtitleImage = await subtitleService.SubtitleImageRequest(param);
   logger.info('Promise SubtitleImage. name:', subtitleImage.name, ' width:', subtitleImage.width, ' height:', subtitleImage.height);
+  logger.info('Promise SubtitleImage. data:', subtitleImage.data);
 }
 
 (async (): Promise<void> => {

@@ -9,7 +9,7 @@
     "incremental": true,
     "declaration": true,
     "newLine": "lf",
-    "strict": true,
+    "strict": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noFallthroughCasesInSwitch": true,
