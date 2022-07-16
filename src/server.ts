@@ -5,8 +5,10 @@ import { SubtitleCreator, SubtitleCreatorService } from './services/SubtitleCrea
 import { logger } from './utils';
 
 // Do not use @grpc/proto-loader
+// set max receive = 100MB
+let maxRecv = 1024*1024*100;
 const myServer = new Server({
-  'grpc.max_receive_message_length': -1,
+  'grpc.max_receive_message_length': maxRecv,
   'grpc.max_send_message_length': -1,
 });
 
