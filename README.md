@@ -16,6 +16,10 @@ npm i
 ```sh
 npm run build # *.proto, *.ts
 npm run lint
+
+sudo apt remove --purge cmake
+#Latest Release (3.23.3)
+sudo snap install cmake --classic
 ```
 
 ## Server Start

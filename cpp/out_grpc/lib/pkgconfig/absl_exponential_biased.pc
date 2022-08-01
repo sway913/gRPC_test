@@ -1,7 +1,7 @@
-prefix=/home/ztz/work/gRPC_test/out_grpc
+prefix=/home/qh/work/gRPC_test/cpp/out_grpc
 exec_prefix=${prefix}
-libdir=/home/ztz/work/gRPC_test/out_grpc/lib
-includedir=/home/ztz/work/gRPC_test/out_grpc/include
+libdir=/home/qh/work/gRPC_test/cpp/out_grpc/lib
+includedir=/home/qh/work/gRPC_test/cpp/out_grpc/include
 
 Name: absl_exponential_biased
 Description: Abseil exponential_biased library

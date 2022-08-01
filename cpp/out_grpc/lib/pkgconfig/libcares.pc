@@ -4,7 +4,7 @@
 #              | (_|_____| (_| | | |  __/\__ \
 #               \___|     \__,_|_|  \___||___/
 #
-prefix=/home/ztz/work/gRPC_test/out_grpc
+prefix=/home/qh/work/gRPC_test/cpp/out_grpc
 exec_prefix=${prefix}/bin
 libdir=${prefix}/lib
 includedir=${prefix}/include

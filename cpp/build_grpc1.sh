@@ -12,14 +12,12 @@ export PATH="$MY_INSTALL_DIR/bin:$PATH"
 
 #git clone --recurse-submodules -b v1.46.4 https://github.com/grpc/grpc
 
-export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-
 cd ${WORK_DIR}/grpc
 
 mkdir -p cmake/build
 pushd cmake/build
 
-#ssl use system
+#build ssl and zlib
 
 cmake -DgRPC_INSTALL=ON \
       -DCMAKE_BUILD_TYPE=Release \

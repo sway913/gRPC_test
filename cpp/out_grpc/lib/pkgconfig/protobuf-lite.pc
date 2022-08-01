@@ -1,7 +1,7 @@
-prefix=/home/ztz/work/gRPC_test/out_grpc
-exec_prefix=/home/ztz/work/gRPC_test/out_grpc
-libdir=/home/ztz/work/gRPC_test/out_grpc/lib
-includedir=/home/ztz/work/gRPC_test/out_grpc/include
+prefix=/home/qh/work/gRPC_test/cpp/out_grpc
+exec_prefix=/home/qh/work/gRPC_test/cpp/out_grpc
+libdir=/home/qh/work/gRPC_test/cpp/out_grpc/lib
+includedir=/home/qh/work/gRPC_test/cpp/out_grpc/include
 
 Name: Protocol Buffers
 Description: Google's Data Interchange Format

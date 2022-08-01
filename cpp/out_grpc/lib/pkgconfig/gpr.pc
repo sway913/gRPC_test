@@ -1,4 +1,4 @@
-prefix=/home/ztz/work/gRPC_test/out_grpc
+prefix=/home/qh/work/gRPC_test/cpp/out_grpc
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib
